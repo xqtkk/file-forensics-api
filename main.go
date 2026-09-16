@@ -68,14 +68,42 @@ func main() {
 			return
 		}
 
-		c.JSON(http.StatusOK, gin.H{
+		// Пробуем извлечь EXIF: переоткрываем файл заново
+		exifFile, err := file.Open()
+		if err == nil {
+			defer exifFile.Close()
+			if meta := ExtractExif(exifFile); meta != nil {
+				_, err = DB.Exec(c.Request.Context(),
+					`INSERT INTO metadata
+					 (file_id, camera_make, camera_model, datetime, width, height, latitude, longitude, iso)
+					 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+					id, meta.CameraMake, meta.CameraModel, meta.DateTime,
+					meta.Width, meta.Height, meta.Latitude, meta.Longitude, meta.ISO,
+				)
+				if err != nil {
+					log.Printf("не удалось сохранить metadata: %v", err)
+				}
+			}
+		}
+
+		response := gin.H{
 			"id":       id,
 			"filename": file.Filename,
 			"size":     file.Size,
 			"md5":      md5Sum,
 			"sha1":     sha1Sum,
 			"sha256":   sha256Sum,
-		})
+		}
+
+		// Перечитываем EXIF ещё раз для ответа
+		if exifFile, err := file.Open(); err == nil {
+			defer exifFile.Close()
+			if meta := ExtractExif(exifFile); meta != nil {
+				response["metadata"] = meta
+			}
+		}
+
+		c.JSON(http.StatusOK, response)
 	})
 
 	// История проверок

@@ -46,5 +46,24 @@ func InitDB() error {
 		return fmt.Errorf("не удалось создать таблицу: %w", err)
 	}
 
+	_, err = DB.Exec(context.Background(), `
+		CREATE TABLE IF NOT EXISTS metadata (
+			id          SERIAL PRIMARY KEY,
+			file_id     INT NOT NULL REFERENCES files(id) ON DELETE CASCADE,
+			camera_make TEXT,
+			camera_model TEXT,
+			datetime    TEXT,
+			width       INT,
+			height      INT,
+			latitude    DOUBLE PRECISION,
+			longitude   DOUBLE PRECISION,
+			iso         INT,
+			created_at  TIMESTAMP DEFAULT NOW()
+		)
+	`)
+	if err != nil {
+		return fmt.Errorf("не удалось создать таблицу metadata: %w", err)
+	}
+
 	return nil
 }
