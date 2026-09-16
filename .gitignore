@@ -1,0 +1,17 @@
+# Бинарники
+*.exe
+*.out
+file-forensics-api
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# ОС
+.DS_Store
+Thumbs.db
+
+# Временные файлы
+test.txt
+uploads/
