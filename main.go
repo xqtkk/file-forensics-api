@@ -182,6 +182,23 @@ func main() {
 		})
 	})
 
+		// Просмотр чанков (без отправки в LLM — просто проверка)
+	r.GET("/chunks", func(c *gin.Context) {
+		events, err := LoadEvents(c.Request.Context())
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+
+		chunks := ChunkEvents(events, 100)
+
+		c.JSON(http.StatusOK, gin.H{
+			"total_events": len(events),
+			"total_chunks": len(chunks),
+			"chunks":       chunks,
+		})
+	})
+
 	fmt.Println("Server started on :8080")
 	r.Run(":8080")
 }
