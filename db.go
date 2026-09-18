@@ -87,7 +87,7 @@ func InitDB() error {
 			id          SERIAL PRIMARY KEY,
 			chunk_index INT NOT NULL,
 			event_count INT NOT NULL,
-			result      JSONB NOT NULL,
+			result      TEXT NOT NULL,
 			raw_response TEXT,
 			created_at  TIMESTAMP DEFAULT NOW()
 		)

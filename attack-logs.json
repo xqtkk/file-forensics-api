@@ -1,0 +1,585 @@
+[
+  {
+    "eventTime": "2024-06-15T09:00:00Z",
+    "eventName": "GetCallerIdentity",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "carol"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:00:41Z",
+    "eventName": "ListBuckets",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "alice"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:02:06Z",
+    "eventName": "PutObject",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.10",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "bob"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:02:45Z",
+    "eventName": "DescribeSecurityGroups",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "bob"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:04:26Z",
+    "eventName": "GetCallerIdentity",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "198.51.100.10",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "dave"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:05:51Z",
+    "eventName": "GetObject",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "dave"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:06:44Z",
+    "eventName": "GetObject",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.11",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "alice"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:07:05Z",
+    "eventName": "PutObject",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "198.51.100.11",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "carol"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:08:58Z",
+    "eventName": "DescribeInstances",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "alice"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:09:56Z",
+    "eventName": "DescribeInstances",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "carol"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:11:19Z",
+    "eventName": "ListBuckets",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.10",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "bob"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:13:07Z",
+    "eventName": "GetObject",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.10",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "dave"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:13:52Z",
+    "eventName": "PutObject",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "198.51.100.10",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "carol"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:14:47Z",
+    "eventName": "ListBuckets",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "alice"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:16:14Z",
+    "eventName": "GetCallerIdentity",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.10",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "dave"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:17:12Z",
+    "eventName": "GetObject",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "carol"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:19:09Z",
+    "eventName": "DescribeInstances",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.11",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "dave"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:19:53Z",
+    "eventName": "DescribeInstances",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "198.51.100.10",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "dave"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:20:53Z",
+    "eventName": "GetCallerIdentity",
+    "eventSource": "s3.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.11",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "bob"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:21:34Z",
+    "eventName": "GetCallerIdentity",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "dave"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:22:58Z",
+    "eventName": "PutObject",
+    "eventSource": "s3.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.10",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "dave"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:23:19Z",
+    "eventName": "DescribeInstances",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "bob"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:25:10Z",
+    "eventName": "GetCallerIdentity",
+    "eventSource": "s3.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.11",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "dave"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:26:36Z",
+    "eventName": "PutObject",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "alice"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:28:13Z",
+    "eventName": "GetCallerIdentity",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "carol"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:28:37Z",
+    "eventName": "GetObject",
+    "eventSource": "s3.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.11",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "alice"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:30:19Z",
+    "eventName": "GetCallerIdentity",
+    "eventSource": "s3.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "alice"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:31:49Z",
+    "eventName": "GetObject",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.10",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "carol"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:33:36Z",
+    "eventName": "ListBuckets",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "carol"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T09:34:48Z",
+    "eventName": "DescribeInstances",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "198.51.100.11",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "bob"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:00:00Z",
+    "eventName": "GetCallerIdentity",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "203.0.113.42",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "compromised-user"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:00:12Z",
+    "eventName": "ListBuckets",
+    "eventSource": "s3.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "203.0.113.42",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "compromised-user"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:00:35Z",
+    "eventName": "DescribeInstances",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "203.0.113.42",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "compromised-user"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:00:42Z",
+    "eventName": "CreateUser",
+    "eventSource": "iam.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "203.0.113.42",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "compromised-user"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:00:49Z",
+    "eventName": "CreateAccessKey",
+    "eventSource": "iam.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "203.0.113.42",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "compromised-user"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:01:17Z",
+    "eventName": "AttachUserPolicy",
+    "eventSource": "iam.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "203.0.113.42",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "compromised-user"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:01:37Z",
+    "eventName": "CreateUser",
+    "eventSource": "iam.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "203.0.113.42",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "compromised-user"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:01:44Z",
+    "eventName": "AttachUserPolicy",
+    "eventSource": "iam.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "203.0.113.42",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "compromised-user"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:02:13Z",
+    "eventName": "ListBuckets",
+    "eventSource": "s3.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "203.0.113.42",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "compromised-user"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:02:35Z",
+    "eventName": "GetObject",
+    "eventSource": "s3.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "203.0.113.42",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "compromised-user"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:03:04Z",
+    "eventName": "GetObject",
+    "eventSource": "s3.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "203.0.113.42",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "compromised-user"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:03:13Z",
+    "eventName": "GetObject",
+    "eventSource": "s3.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "203.0.113.42",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "compromised-user"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:03:22Z",
+    "eventName": "DeleteBucket",
+    "eventSource": "s3.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "203.0.113.42",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "compromised-user"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:33:48Z",
+    "eventName": "PutObject",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.11",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "dave"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:34:25Z",
+    "eventName": "DescribeSecurityGroups",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "carol"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:35:26Z",
+    "eventName": "GetCallerIdentity",
+    "eventSource": "sts.amazonaws.com",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "198.51.100.11",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "dave"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:35:51Z",
+    "eventName": "ListBuckets",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.11",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "alice"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:37:16Z",
+    "eventName": "DescribeSecurityGroups",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.10",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "alice"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:38:56Z",
+    "eventName": "GetCallerIdentity",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.10",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "alice"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:40:56Z",
+    "eventName": "GetObject",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.11",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "dave"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:41:33Z",
+    "eventName": "DescribeSecurityGroups",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "198.51.100.10",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "dave"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:43:26Z",
+    "eventName": "PutObject",
+    "eventSource": "ec2.amazonaws.com",
+    "awsRegion": "us-east-1",
+    "sourceIPAddress": "198.51.100.10",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "dave"
+    }
+  },
+  {
+    "eventTime": "2024-06-15T11:44:21Z",
+    "eventName": "PutObject",
+    "eventSource": "s3.amazonaws.com",
+    "awsRegion": "eu-west-1",
+    "sourceIPAddress": "198.51.100.12",
+    "userIdentity": {
+      "type": "IAMUser",
+      "userName": "alice"
+    }
+  }
+]

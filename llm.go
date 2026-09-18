@@ -31,7 +31,7 @@ func AnalyzeChunk(ctx context.Context, chunk Chunk) (string, error) {
 	prompt := buildPrompt(chunk)
 
 	reqBody := OllamaRequest{
-		Model:  "llama3.2:3b",
+		Model: "llama3.1:8b",
 		Prompt: prompt,
 		Stream: false,
 		Format: "json",
@@ -42,7 +42,7 @@ func AnalyzeChunk(ctx context.Context, chunk Chunk) (string, error) {
 		return "", fmt.Errorf("ошибка маршалинга: %w", err)
 	}
 
-	client := &http.Client{Timeout: 5 * time.Minute}
+	client := &http.Client{Timeout: 15 * time.Minute}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", ollamaURL, bytes.NewBuffer(jsonBody))
 	if err != nil {
@@ -68,22 +68,56 @@ func AnalyzeChunk(ctx context.Context, chunk Chunk) (string, error) {
 func buildPrompt(chunk Chunk) string {
 	eventsJSON, _ := json.MarshalIndent(chunk.Events, "", "  ")
 
-	return fmt.Sprintf(`Ты — аналитик по цифровой криминалистике. Проанализируй следующие события из облачных логов (AWS CloudTrail).
+	return fmt.Sprintf(`Ты — аналитик DFIR. Проанализируй события AWS CloudTrail.
 
-Задача:
-1. Найди подозрительные события или паттерны.
-2. Определи возможную стадию атаки (разведка, эксплуатация, закрепление, эскалация привилегий, эксфильтрация).
-3. Опиши, что могло произойти.
+ЗАДАЧА: найти IP-адрес и пользователя, которые НЕ являются обычными для этого лога.
+
+МЕТОД:
+1. Посчитай, сколько раз встречается каждый IP-адрес.
+2. Посчитай, сколько раз встречается каждый пользователь.
+3. IP или пользователь, который встречается РЕЖЕ ВСЕГО — подозрительный.
+4. Если есть события CreateUser, CreateAccessKey, AttachUserPolicy от одного пользователя — это атака.
 
 События (чанк #%d):
 %s
 
-Ответ верни СТРОГО в формате JSON:
+Ответ СТРОГО в JSON без пояснений:
 {
+  "suspicious_ips": ["ip1", "ip2"],
+  "suspicious_users": ["user1"],
   "suspicious_events": [
-    {"event_name": "...", "reason": "..."}
+    {"event_name": "...", "user_name": "...", "source_ip": "...", "reason": "..."}
   ],
-  "attack_stage": "название стадии или none",
-  "summary": "краткое описание на русском"
+  "attack_stage": "...",
+  "summary": "..."
 }`, chunk.Index, string(eventsJSON))
+}
+
+// extractJSON вытаскивает JSON-объект из ответа модели.
+// Если модель добавила текст до/после — отрезает его.
+func extractJSON(s string) string {
+	start := -1
+	end := -1
+	depth := 0
+
+	for i, ch := range s {
+		if ch == '{' {
+			if depth == 0 {
+				start = i
+			}
+			depth++
+		} else if ch == '}' {
+			depth--
+			if depth == 0 {
+				end = i
+				break
+			}
+		}
+	}
+
+	if start == -1 || end == -1 {
+		return s // не нашли — возвращаем как есть
+	}
+
+	return s[start : end+1]
 }

@@ -190,7 +190,7 @@ func main() {
 			return
 		}
 
-		chunks := ChunkEvents(events, 100)
+		chunks := ChunkEvents(events, 30)
 
 		c.JSON(http.StatusOK, gin.H{
 			"total_events": len(events),
@@ -207,8 +207,7 @@ func main() {
 			return
 		}
 
-		chunks := ChunkEvents(events, 100)
-
+		chunks := ChunkEvents(events, 30)
 		var results []gin.H
 		for _, chunk := range chunks {
 			// Отправляем в LLM
@@ -222,10 +221,12 @@ func main() {
 			}
 
 			// Сохраняем в БД
+			cleanJSON := extractJSON(rawResponse)
+
 			_, err = DB.Exec(c.Request.Context(),
 				`INSERT INTO analyses (chunk_index, event_count, result, raw_response)
 				 VALUES ($1, $2, $3, $4)`,
-				chunk.Index, len(chunk.Events), []byte(rawResponse), rawResponse,
+				chunk.Index, len(chunk.Events), cleanJSON, rawResponse,
 			)
 			if err != nil {
 				results = append(results, gin.H{
