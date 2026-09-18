@@ -199,6 +199,55 @@ func main() {
 		})
 	})
 
+		// Запуск анализа чанков через LLM
+	r.POST("/analyze", func(c *gin.Context) {
+		events, err := LoadEvents(c.Request.Context())
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+
+		chunks := ChunkEvents(events, 100)
+
+		var results []gin.H
+		for _, chunk := range chunks {
+			// Отправляем в LLM
+			rawResponse, err := AnalyzeChunk(c.Request.Context(), chunk)
+			if err != nil {
+				results = append(results, gin.H{
+					"chunk_index": chunk.Index,
+					"error":       err.Error(),
+				})
+				continue
+			}
+
+			// Сохраняем в БД
+			_, err = DB.Exec(c.Request.Context(),
+				`INSERT INTO analyses (chunk_index, event_count, result, raw_response)
+				 VALUES ($1, $2, $3, $4)`,
+				chunk.Index, len(chunk.Events), []byte(rawResponse), rawResponse,
+			)
+			if err != nil {
+				results = append(results, gin.H{
+					"chunk_index": chunk.Index,
+					"error":       "не удалось сохранить: " + err.Error(),
+				})
+				continue
+			}
+
+			results = append(results, gin.H{
+				"chunk_index": chunk.Index,
+				"event_count": len(chunk.Events),
+				"analysis":    rawResponse,
+			})
+		}
+
+		c.JSON(http.StatusOK, gin.H{
+			"total_chunks": len(chunks),
+			"results":      results,
+		})
+	})
+
 	fmt.Println("Server started on :8080")
 	r.Run(":8080")
 }

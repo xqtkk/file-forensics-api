@@ -82,5 +82,19 @@ func InitDB() error {
 		return fmt.Errorf("не удалось создать таблицу events: %w", err)
 	}
 
+	_, err = DB.Exec(context.Background(), `
+		CREATE TABLE IF NOT EXISTS analyses (
+			id          SERIAL PRIMARY KEY,
+			chunk_index INT NOT NULL,
+			event_count INT NOT NULL,
+			result      JSONB NOT NULL,
+			raw_response TEXT,
+			created_at  TIMESTAMP DEFAULT NOW()
+		)
+	`)
+	if err != nil {
+		return fmt.Errorf("не удалось создать таблицу analyses: %w", err)
+	}
+
 	return nil
 }

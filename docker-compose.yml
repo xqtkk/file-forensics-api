@@ -27,8 +27,11 @@ services:
     environment:
       DATABASE_URL: postgres://forensics:forensics@db:5432/forensics
       GIN_MODE: release
+      OLLAMA_HOST: http://host.docker.internal:11434
     ports:
       - "8080:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 volumes:
   pgdata:
