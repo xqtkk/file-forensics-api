@@ -26,6 +26,7 @@ services:
         condition: service_healthy
     environment:
       DATABASE_URL: postgres://forensics:forensics@db:5432/forensics
+      GIN_MODE: release
     ports:
       - "8080:8080"
 

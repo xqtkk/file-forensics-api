@@ -65,5 +65,22 @@ func InitDB() error {
 		return fmt.Errorf("не удалось создать таблицу metadata: %w", err)
 	}
 
+	_, err = DB.Exec(context.Background(), `
+		CREATE TABLE IF NOT EXISTS events (
+			id           SERIAL PRIMARY KEY,
+			event_time   TIMESTAMP NOT NULL,
+			event_name   TEXT NOT NULL,
+			user_name    TEXT,
+			source_ip    TEXT,
+			region       TEXT,
+			event_source TEXT,
+			raw          JSONB,
+			created_at   TIMESTAMP DEFAULT NOW()
+		)
+	`)
+	if err != nil {
+		return fmt.Errorf("не удалось создать таблицу events: %w", err)
+	}
+
 	return nil
 }

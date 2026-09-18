@@ -5,6 +5,7 @@ import (
 	"crypto/sha1"
 	"crypto/sha256"
 	"encoding/hex"
+	"encoding/json"
 	"fmt"
 	"io"
 	"log"
@@ -141,6 +142,43 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{
 			"count": len(files),
 			"files": files,
+		})
+	})
+
+	// Приём массива событий CloudTrail
+	r.POST("/logs", func(c *gin.Context) {
+		// Читаем тело запроса как массив JSON-объектов
+		body, err := io.ReadAll(c.Request.Body)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "не удалось прочитать тело"})
+			return
+		}
+
+		// Пробуем распарсить как массив
+		var rawEvents []json.RawMessage
+		if err := json.Unmarshal(body, &rawEvents); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "ожидается массив JSON-объектов"})
+			return
+		}
+
+		var saved, failed int
+		for _, raw := range rawEvents {
+			ev, err := NormalizeCloudTrail(raw)
+			if err != nil {
+				failed++
+				continue
+			}
+			if err := SaveEvent(c.Request.Context(), ev); err != nil {
+				failed++
+				continue
+			}
+			saved++
+		}
+
+		c.JSON(http.StatusOK, gin.H{
+			"saved":  saved,
+			"failed": failed,
+			"total":  len(rawEvents),
 		})
 	})
 
